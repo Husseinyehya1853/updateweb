@@ -1,0 +1,464 @@
+/* Importing Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Aref+Ruqaa:wght@400;700&display=swap');
+
+/* Color Variables */
+:root {
+    --background-color: #121212;
+    --primary-color: #00d4ff;
+    --secondary-color: #1e1e1e;
+    --text-color: #e0e0e0;
+    --hover-color: #ff007a;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --card-bg: rgba(30, 30, 30, 0.8);
+    --card-hover-bg: rgba(40, 40, 40, 0.9);
+    --glow-color: #00d4ff80;
+}
+
+/* General Styles */
+body {
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+    background: linear-gradient(45deg, #121212, #1a1a1a, #121212);
+    background-size: 200% 200%;
+    animation: bgGradient 10s ease infinite;
+    color: var(--text-color);
+    overflow-x: hidden;
+    cursor: none;
+}
+
+/* Header */
+.member-profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: var(--secondary-color);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--primary-color);
+    animation: slideDown 0.8s ease-out forwards;
+}
+
+.member-profile-header .left-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.member-profile-header .logo {
+    width: 70px;
+    height: 70px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    animation: bounceIn 1s ease-out;
+}
+
+.member-profile-header .logo:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px var(--primary-color));
+}
+
+.member-profile-header .tech-team {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-shadow: 0 0 5px var(--glow-color);
+    animation: neonFlicker 2s infinite alternate;
+}
+
+.member-profile-header nav {
+    display: flex;
+    gap: 20px;
+}
+
+.member-profile-header nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 18px;
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease;
+    position: relative;
+}
+
+.member-profile-header nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    right: 0;
+    background: var(--hover-color);
+    transition: width 0.3s ease;
+}
+
+.member-profile-header nav a:hover::after {
+    width: 100%;
+}
+
+.member-profile-header nav a:hover {
+    color: var(--hover-color);
+    text-shadow: 0 0 10px var(--hover-color);
+}
+
+/* Content */
+.content {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.5s forwards;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-pic {
+    display: block;
+    margin: 0 auto 20px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 0 15px var(--glow-color);
+    transition: transform 0.3s ease;
+    animation: shadowPulse 4s infinite ease-in-out;
+}
+
+/* Member Name with Handwritten Style */
+.member-name {
+    text-align: center;
+    font-size: 36px;
+    margin: 0 0 20px;
+    position: relative;
+}
+
+.handwritten {
+    font-family: 'Aref Ruqaa', serif;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--glow-color);
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typeWriter 2s steps(20) forwards, shineEffect 3s infinite 2s;
+}
+
+.name-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.name-icons span {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--hover-color);
+    border-radius: 50%;
+    animation: orbitIcons 3s infinite ease-in-out;
+}
+
+.name-icons span:nth-child(1) {
+    left: -20px;
+    animation-delay: 0s;
+}
+
+.name-icons span:nth-child(2) {
+    right: -20px;
+    animation-delay: 1.5s;
+}
+
+/* Glassmorphism Section */
+.section {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.section:hover {
+    transform: translateY(-5px);
+    background: var(--card-hover-bg);
+    box-shadow: 0 0 20px var(--glow-color), 0 0 40px var(--primary-color);
+}
+
+.section h2 {
+    color: var(--primary-color);
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px var(--glow-color);
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typeWriter 1s steps(15) forwards;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    right: 0;
+    background: var(--hover-color);
+    transition: width 0.3s ease;
+}
+
+.section:hover h2::after {
+    width: 100%;
+}
+
+.section div {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    position: relative;
+    padding-right: 20px;
+}
+
+.section div::before {
+    content: "✨";
+    position: absolute;
+    right: 0;
+    color: var(--primary-color);
+}
+
+.section div strong {
+    color: var(--primary-color);
+}
+
+.section a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.section a:hover {
+    color: var(--hover-color);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: var(--secondary-color);
+    color: #8f8f8f;
+    font-size: 14px;
+    margin-top: 30px;
+    border-top: 1px solid var(--primary-color);
+    animation: fadeInUp 1s ease-out 1s forwards;
+}
+
+/* Custom Button from Uiverse.io */
+.button {
+    margin: 20px auto;
+    height: auto;
+    background: transparent;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.button .actual-text,
+.button .hover-text {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.button .hover-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    color: var(--hover-color);
+    overflow: hidden;
+    transition: width 0.5s ease;
+}
+
+.button:hover .hover-text {
+    width: 100%;
+}
+
+.button:hover .actual-text {
+    color: transparent;
+}
+
+/* Floating WhatsApp Button */
+.floating-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.floating-btn img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--glow-color);
+}
+
+.floating-btn:hover {
+    transform: scale(1.1) translateY(-5px);
+}
+
+/* Particles */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.particles span {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: floatParticles 5s infinite ease-in-out;
+}
+
+.particles span:nth-child(1) { left: 20%; top: 10%; animation-delay: 0s; }
+.particles span:nth-child(2) { left: 40%; top: 50%; animation-delay: 1s; }
+.particles span:nth-child(3) { left: 60%; top: 30%; animation-delay: 2s; }
+.particles span:nth-child(4) { left: 80%; top: 70%; animation-delay: 3s; }
+.particles span:nth-child(5) { left: 10%; top: 80%; animation-delay: 4s; }
+
+/* Mouse Light */
+.mouse-light {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease;
+}
+
+.section:hover ~ .mouse-light,
+.button:hover ~ .mouse-light {
+    width: 30px;
+    height: 30px;
+}
+
+/* Ripple Effect */
+.ripple-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.ripple {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: rippleExpand 1s ease-out forwards;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    60% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes neonFlicker {
+    0%, 100% { text-shadow: 0 0 5px var(--glow-color); }
+    50% { text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--primary-color); }
+}
+
+@keyframes typeWriter {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+@keyframes floatParticles {
+    0% { transform: translateY(0) translateX(0); opacity: 0.5; }
+    50% { transform: translateY(-20px) translateX(10px); opacity: 1; }
+    100% { transform: translateY(0) translateX(0); opacity: 0.5; }
+}
+
+@keyframes orbitIcons {
+    0% { transform: translate(0, 0); opacity: 0.5; }
+    50% { transform: translate(10px, -10px); opacity: 1; }
+    100% { transform: translate(0, 0); opacity: 0.5; }
+}
+
+@keyframes bgGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes shadowPulse {
+    0% { box-shadow: 0 0 15px var(--glow-color); }
+    50% { box-shadow: 0 0 25px var(--glow-color), 0 0 40px var(--primary-color); }
+    100% { box-shadow: 0 0 15px var(--glow-color); }
+}
+
+@keyframes shineEffect {
+    0% { background-position: -200%; }
+    20% { background-position: 200%; }
+    100% { background-position: 200%; }
+}
+
+@keyframes rippleExpand {
+    0% { width: 10px; height: 10px; opacity: 1; }
+    100% { width: 100px; height: 100px; opacity: 0; }
+}
