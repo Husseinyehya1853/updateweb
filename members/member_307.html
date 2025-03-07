@@ -4,59 +4,219 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/styles/members_about.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
     <title>يوسف هيثم يوسف أحمد يوسف - الصفحة الشخصية</title>
 </head>
 <body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Header with Navigation Bar -->
     <header class="member-profile-header">
         <div class="left-section">
-            <a href="../index.html">
+            <a href="../index.html" class="logo-link">
                 <img src="../media/logos/logo.png" alt="Logo" class="logo">
+                <span class="ripple-effect"></span>
             </a>
             <span class="tech-team">الفريق التقني</span>
         </div>
         <nav>
-            <a href="../index.html">الرئيسية</a>
-            <a href="../pages/members.html">الأعضاء</a>
-            <a href="../pages/about.html">عن الفريق</a>
+            <a href="../index.html">الرئيسية<span class="ripple-effect"></span></a>
+            <a href="../pages/members.html">الأعضاء<span class="ripple-effect"></span></a>
+            <a href="../pages/about.html">عن الفريق<span class="ripple-effect"></span></a>
         </nav>
     </header>
+
+    <!-- Member Content -->
     <div class="content">
+        <!-- Member Photo and Name -->
         <img src="../media/members_profiles/member_307.jpg" alt="صورة العضو" class="profile-pic">
-        <div class="member-name">يوسف هيثم يوسف أحمد يوسف</div>
+        <div class="member-name">
+            <span class="handwritten">يوسف هيثم يوسف أحمد يوسف</span>
+            <div class="name-icons">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <!-- Personal Info Section -->
         <div class="section" id="section1">
             <h2>المعلومات الشخصية</h2>
-            <div><strong>الرتبة:</strong> عضو في فريق Office</div>
-            <div><strong>الرقم المسلسل:</strong> 307</div>
+            <div><strong class="text-line">الرتبة:</strong> <span class="text-line">عضو في فريق Office</span></div>
+            <div><strong class="text-line">الرقم المسلسل:</strong> <span class="text-line">307</span></div>
         </div>
+
+        <!-- Goals Section -->
         <div class="section" id="section2">
             <h2>الهدف</h2>
-            <div>هدفي هو المساهمة في تنظيم الفريق وتحسين كفاءة العمل.</div>
+            <div><span class="text-line">هدفي هو المساهمة في تنظيم الفريق وتحسين كفاءة العمل.</span></div>
         </div>
+
+        <!-- Skills Section -->
         <div class="section" id="section3">
             <h2>المهارات</h2>
-            <div>- خبرة في إدارة المهام والجداول الزمنية.</div>
-            <div>- معرفة ببرامج Microsoft Office.</div>
-            <div>- مهارات في التواصل الفعال.</div>
+            <div><span class="text-line">- خبرة في إدارة المهام والجداول الزمنية.</span></div>
+            <div><span class="text-line">- معرفة ببرامج Microsoft Office.</span></div>
+            <div><span class="text-line">- مهارات في التواصل الفعال.</span></div>
         </div>
+
+        <!-- Custom Button from Uiverse.io -->
+        <button class="button" data-text="تواصل معايا">
+            <span class="actual-text">تواصل معايا</span>
+            <span aria-hidden="true" class="hover-text">تواصل معايا</span>
+        </button>
     </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/+201066480958" class="floating-btn" target="_blank">
+        <img src="../media/whatsapp.png" alt="واتساب">
+    </a>
+
+    <!-- Footer -->
     <footer>
-        <div><strong>تواصل مع الفريق:</strong> <a href="mailto:Itmedhattalat@gmail.com">Itmedhattalat@gmail.com</a> | 01066480958</div>
-        <p>© كل الحقوق محفوظة للفريق التقني - 2024</p>
+        <div class="footer-content">
+            <span class="gradient-text"><strong>تواصل مع الفريق:</strong></span> 
+            <a href="mailto:Itmedhattalat@gmail.com">Itmedhattalat@gmail.com</a> | 01066480958
+        </div>
+        <div class="social-icons">
+            <a href="https://linkedin.com" target="_blank"><img src="../media/linkedin.png" alt="LinkedIn" class="social-icon"></a>
+            <a href="https://twitter.com" target="_blank"><img src="../media/twitter.png" alt="Twitter" class="social-icon"></a>
+            <a href="https://wa.me/+201066480958" target="_blank"><img src="../media/whatsapp.png" alt="WhatsApp" class="social-icon"></a>
+        </div>
+        <p>© كل الحقوق محفوظة للفريق التقني - 2025</p>
+        <button class="scroll-top-btn">لأعلى</button>
     </footer>
+
+    <!-- Particles -->
+    <div class="particles"></div>
+
+    <!-- Mouse Light -->
+    <div class="mouse-light"></div>
+
+    <!-- Ripple Container -->
+    <div class="ripple-container"></div>
+
+    <!-- Script for Interactions -->
     <script>
         function showSections() {
             const sections = document.querySelectorAll('.section');
+            sections.forEach((section) => {
+                section.style.opacity = 0;
+                const lines = section.querySelectorAll('.text-line');
+                lines.forEach(line => line.style.opacity = 0);
+            });
             sections.forEach((section, index) => {
                 setTimeout(() => {
                     section.style.opacity = 1;
-                }, index * 1500);
+                    const lines = section.querySelectorAll('.text-line');
+                    lines.forEach((line, lineIndex) => {
+                        setTimeout(() => {
+                            line.style.opacity = 1;
+                            line.style.transform = 'translateY(0)';
+                        }, lineIndex * 200);
+                    });
+                }, index * 200);
             });
         }
+
         window.onload = function() {
             showSections();
             document.querySelector('.content').style.opacity = 1;
         };
+
+        // Burst Effect on Button Click
+        document.querySelector('.button').addEventListener('click', (e) => {
+            createBurst(e.pageX, e.pageY);
+        });
+
+        // 3D Image Effect with Interactive Border
+        const profilePic = document.querySelector('.profile-pic');
+        document.querySelector('.content').addEventListener('mousemove', (e) => {
+            const rect = profilePic.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            const rotateX = y / 20;
+            const rotateY = -x / 20;
+            profilePic.style.transform = `perspective(500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            profilePic.style.borderColor = `hsl(${Math.abs(x) + Math.abs(y)}, 100%, 50%)`;
+        });
+        document.querySelector('.content').addEventListener('mouseleave', () => {
+            profilePic.style.transform = 'perspective(500px) rotateX(0) rotateY(0)';
+            profilePic.style.borderColor = 'var(--primary-color)';
+        });
+
+        // Mouse Light
+        const mouseLight = document.querySelector('.mouse-light');
+        document.addEventListener('mousemove', (e) => {
+            mouseLight.style.left = `${e.pageX}px`;
+            mouseLight.style.top = `${e.pageY}px`;
+        });
+
+        // Ripple Effect
+        const rippleContainer = document.querySelector('.ripple-container');
+        document.addEventListener('click', (e) => {
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple');
+            ripple.style.left = `${e.pageX}px`;
+            ripple.style.top = `${e.pageY}px`;
+            rippleContainer.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 1000);
+        });
+
+        // Interactive Background and Parallax
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+            document.body.style.backgroundPosition = `${50 + x}% ${50 + y}%`;
+            document.querySelector('.member-profile-header').style.background = `linear-gradient(45deg, #1e1e1e, hsl(${x + 180}, 50%, 20%))`;
+        });
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            document.querySelector('.particles').style.transform = `translateY(${scrollY * 0.5}px)`;
+        });
+
+        // Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+        });
+
+        // Burst Effect Function
+        function createBurst(x, y) {
+            const burstContainer = document.createElement('div');
+            burstContainer.classList.add('burst-container');
+            burstContainer.style.left = `${x}px`;
+            burstContainer.style.top = `${y}px`;
+            document.body.appendChild(burstContainer);
+            for (let i = 0; i < 10; i++) {
+                const particle = document.createElement('span');
+                particle.classList.add('burst-particle');
+                const angle = Math.random() * 360;
+                const distance = Math.random() * 20 + 10;
+                particle.style.setProperty('--x', `${Math.cos(angle) * distance}px`);
+                particle.style.setProperty('--y', `${Math.sin(angle) * distance}px`);
+                burstContainer.appendChild(particle);
+            }
+            setTimeout(() => burstContainer.remove(), 500);
+        }
+
+        // Scroll to Top
+        document.querySelector('.scroll-top-btn').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Header Ripple Effect
+        document.querySelectorAll('.logo-link, nav a').forEach(item => {
+            item.addEventListener('mouseenter', (e) => {
+                const ripple = item.querySelector('.ripple-effect');
+                ripple.style.left = `${e.offsetX}px`;
+                ripple.style.top = `${e.offsetY}px`;
+                ripple.classList.add('active');
+                setTimeout(() => ripple.classList.remove('active'), 600);
+            });
+        });
     </script>
 </body>
 </html>
